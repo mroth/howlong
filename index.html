@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Long?</title>
+    <style>
+        #display {
+            text-align: center;
+            margin-top: 10%;
+        }
+        #duration {
+            font-size: 4.5rem;
+        }
+        #subtext {
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="display">
+        <div id="duration"></div>
+        <div id="subtext"></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script>
+        let date = "2020-11-09"; // default
+        const params = new URLSearchParams(location.search);
+        const q = params.get("q");
+        if (q) {
+            date = q;
+        }
+
+        const now = moment();
+        let start = moment(date, "YYYY-MM-DD");
+        let years = now.diff(start, "years");
+        start.add(years, "years");
+        let months = now.diff(start, "months");
+        start.add(months, "months");
+        let days = now.diff(start, "days");
+        document.getElementById("duration").innerHTML = `${years} years, ${months} months, ${days} days`;
+        document.getElementById("subtext").innerHTML = `(since ${date})`;
+    </script>
+</body>
+
+</html>
