@@ -40,8 +40,8 @@
         let months = now.diff(start, "months");
         start.add(months, "months");
         let days = now.diff(start, "days");
-        document.getElementById("duration").innerHTML = `${years} years, ${months} months, ${days} days`;
-        document.getElementById("subtext").innerHTML = `(since ${date})`;
+        document.getElementById("duration").textContent = `${years} years, ${months} months, ${days} days`;
+        document.getElementById("subtext").textContent = `(since ${date})`;
     </script>
 </body>
 </html>
