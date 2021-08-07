@@ -31,6 +31,9 @@
         const q = params.get("q");
         if (q) {
             date = q;
+        } else {
+            params.set("q", date);
+            location.search = params.toString();
         }
 
         const now = dayjs();
