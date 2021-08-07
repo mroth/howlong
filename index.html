@@ -44,7 +44,10 @@
         start = start.add(months, "months");
         let days = now.diff(start, "days");
 
-        document.getElementById("duration").textContent = `${years} years, ${months} months, ${days} days`;
+        function pluralize(n, period) {
+            return `${n} ${(n === 1) ? period : period + "s"}`;
+        }
+        document.getElementById("duration").textContent = `${pluralize(years, "year")}, ${pluralize(months, "month")}, ${pluralize(days, "day")}`;
         document.getElementById("subtext").textContent = `(since ${date})`;
     </script>
 </body>
