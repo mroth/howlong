@@ -24,7 +24,7 @@
         <div id="duration"></div>
         <div id="subtext"></div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.6/dayjs.min.js" integrity="sha512-bwD3VD/j6ypSSnyjuaURidZksoVx3L1RPvTkleC48SbHCZsemT3VKMD39KknPnH728LLXVMTisESIBOAb5/W0Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         let date = "2020-11-09"; // default
         const params = new URLSearchParams(location.search);
@@ -33,13 +33,14 @@
             date = q;
         }
 
-        const now = moment();
-        let start = moment(date, "YYYY-MM-DD");
+        const now = dayjs();
+        let start = dayjs(date, "YYYY-MM-DD");
         let years = now.diff(start, "years");
-        start.add(years, "years");
+        start = start.add(years, "years");
         let months = now.diff(start, "months");
-        start.add(months, "months");
+        start = start.add(months, "months");
         let days = now.diff(start, "days");
+
         document.getElementById("duration").textContent = `${years} years, ${months} months, ${days} days`;
         document.getElementById("subtext").textContent = `(since ${date})`;
     </script>
